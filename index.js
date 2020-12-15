@@ -135,6 +135,20 @@ const app  = new Vue ({
         }
     
     })
-    }
+    },
+    esCompra(comp) {
+      return comp.id_compra ===this.compras.id_compra;
+    },
+    buscarCompra(){
+      const found = this.compras.find(this.esCompra);
+      alert(`
+      Id compra: ${found.id_compra}
+      Cedula: ${found.cedula}
+      Nombres: ${found.nombres}
+      Apellidos: ${found.apellidos}
+      Codigo producto: ${found.codigo_producto}
+      Producto: ${found.producto}
+      Precio compra: ${found.precio_compra}
+      `)
   }
 })
