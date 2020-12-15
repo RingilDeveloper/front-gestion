@@ -10,7 +10,7 @@ const app  = new Vue ({
       email: 'gmail',
       telefono: '58558',
     },
-    {cedula:"1098558",
+    {cedula:"1098",
       nombres: 'panca maria' ,
       apellidos: 'pereira',
       email: 'gmail',
@@ -70,8 +70,17 @@ const app  = new Vue ({
         })
       }
     },
+    esCliente(persona) {
+      return persona.cedula ===this.cliente.cedula;
+  },
     buscarCliente(){
-      
+      const found = this.clientes.find(this.esCliente);
+      alert(`
+      Cedula: ${found.cedula}
+      Nombre: ${found.nombres}
+      Apellidos: ${found.apellidos}
+      Email: ${found.email}
+      Telefono: ${found.telefono}`)
     },
     eliminarCliente(index){
       Swal.fire({
@@ -93,6 +102,18 @@ const app  = new Vue ({
         }
     
     })
+    }, 
+    esProducto(product) {
+      return product.cedula ===this.productos.codigo_producto;
+    },
+    buscarProducto(){
+      const found = this.productos.find(this.esProducto);
+      alert(`
+      Codigo producto: ${found.codigo_producto}
+      Nombre: ${found.nombre_producto}
+      Precio: ${found.precio}
+      Cantidad: ${found.cantidad_disponible}
+      `)
     },
     eliminaProducto(index){
       Swal.fire({
