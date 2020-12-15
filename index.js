@@ -151,4 +151,5 @@ const app  = new Vue ({
       Precio compra: ${found.precio_compra}
       `)
   }
+}
 })

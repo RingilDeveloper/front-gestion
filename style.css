@@ -23,7 +23,9 @@ body{
 }
 .sesion{
   width: 50%;
+  max-width: 400px;
   height: 500px;
+
   padding: 20px;
   display: flex;
   margin-top: 20px;
