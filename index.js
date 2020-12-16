@@ -25,13 +25,12 @@ const app  = new Vue ({
       email: "",
       telefono: "",
     },
-    productos: [
-     { codigo_producto: "",
+    productos: [{ 
+      codigo_producto: "",
       nombre_producto: "",
       precio: "",
      cantidad_disponible: "",
-      }   
-         ],
+      } ],
     producto: {
       codigo_producto: "",
       nombre_producto: "",

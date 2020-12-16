@@ -25,7 +25,6 @@ body{
   width: 50%;
   max-width: 400px;
   height: 500px;
-
   padding: 20px;
   display: flex;
   margin-top: 20px;
@@ -84,9 +83,7 @@ h2{
   width: 80%;
   ;
 }
-.container-sec{
 
-}
 .container-rigth{
   width: 70%;
   padding: 20px;
@@ -128,4 +125,21 @@ h2{
 .table table{
   width: 100%;
   border:none
+}
+/* footter*/
+
+.footer{
+  width: 100%;
+  height: 110px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  color: white;
+}
+.footer a {
+  color:white;
+  text-decoration: none;
+}
+.footer a:hover{
+  text-decoration: underline;
 }
