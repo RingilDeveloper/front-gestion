@@ -19,9 +19,22 @@
      
       <div class="buscador">
         <div class="d-flex align-items-center w-100">
-        <input type="text" class="form-control "  v-model="cliente.cedula" v-on:keyup.enter="buscarCliente">
-        <button class="btn btn-success m-2 ">Buscar</button>
+        <input type="text" class="form-control "  v-model="compra.id_compra" v-on:keyup.enter="buscarCompra">
+        <button class="btn btn-success m-2 " @click="buscarCompra">Buscar</button>
       </div>
+    </div>
+    <div class="agregar">
+      <input type="text" v-model='compra.id_compra' placeholder="Id compra">
+      <input type="text" v-model='compra.cedula' placeholder="Cedula">
+      <input type="text" v-model='compra.nombres' placeholder="Nombres">
+      <input type="text" v-model='compra.apellidos' placeholder="Apellidos" >
+      <input type="text" v-model='compra.codigo_producto' placeholder="Codigo del producto" >
+      <input type="text" v-model='compra.producto' placeholder="Producto" >
+      <input type="text" v-model='compra.precio_compra' placeholder="Precio de la compra" v-on:keyup.enter="agregarCompra" >
+
+      <button class="btn btn-success"  @click="agregarCompra">Agregar</button>
+    </div>
+
         <div class="table">
           <table>
             <tr>
@@ -46,7 +59,6 @@
         </div>
       </div>
     
-    </div>
   </section>
   <pie></pie>
 </div>

@@ -15,18 +15,23 @@
     <cabecera></cabecera>
     <section class=" container-sec container-xl ">
     <navegacion></navegacion>
-    <div class="container-rigth">
+    <v class="container-rigth">
      
       <div class="buscador">
         <div class="d-flex align-items-center w-100">
         <input type="text" class="form-control "  v-model="cliente.cedula" v-on:keyup.enter="buscarCliente">
         <button class="btn btn-success m-2 "  @click="buscarCliente">Buscar</button>
       </div>
-      <div :class
-      
-      >
+    </div>
+    <div class="agregar">
+      <input type="text" v-model='cliente.cedula' placeholder="Cedula">
+      <input type="text" v-model='cliente.nombres' placeholder="Nombres">
+      <input type="text" v-model='cliente.apellidos' placeholder="Apellidos">
+      <input type="text" v-model='cliente.email' placeholder="Email"  >
+      <input type="text" v-model='cliente.telefono' placeholder="Telefono"  >
 
-      </div>
+      <button class="btn btn-success"  @click="agregarCliente">Agregar</button>
+    </div>
         <div class="table">
           <table>
             <tr>
@@ -47,7 +52,7 @@
             
           </table>
         </div>
-      </div>
+      
     
     </div>
   </section>

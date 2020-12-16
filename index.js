@@ -4,20 +4,12 @@ const app  = new Vue ({
     usuario: "",
     contraseña: "",
     clientes: [
-      {cedula:"1098558",
-      nombres: 'panca maria' ,
-      apellidos: 'pereira',
-      email: 'gmail',
-      telefono: '58558',
-    },
-    {cedula:"1098",
-      nombres: 'panca maria' ,
-      apellidos: 'pereira',
-      email: 'gmail',
-      telefono: '58558',
-    },
-    
-    ],
+      {cedula:"",
+      nombres: '' ,
+      apellidos: '',
+      email: '',
+      telefono: '',
+    } ],
     cliente: {
       cedula: "",
       nombres: "",
@@ -81,6 +73,22 @@ const app  = new Vue ({
       Email: ${found.email}
       Telefono: ${found.telefono}`)
     },
+    agregarCliente(){
+      this.clientes.push({ 
+        cedula: this.cliente.cedula,
+        nombres: this.cliente.nombres,
+        apellidos: this.cliente.apellidos,
+        email:this.cliente.email,
+        telefono: this.cliente.telefono
+      })
+      this.cliente.cedula=""
+      this.cliente.nombres=""
+      this.cliente.apellidos=""
+      this.cliente.email=""
+      this.cliente.telefono=""
+      this.guardarBaseDeDatos()
+
+    },
     eliminarCliente(index){
       Swal.fire({
         title: 'Estas seguro?',
@@ -101,11 +109,15 @@ const app  = new Vue ({
         }
     
     })
+    this.guardarBaseDeDatos()
+
     }, 
     esProducto(product) {
-      return product.cedula ===this.productos.codigo_producto;
+      console.log(product)
+      return product.codigo_producto ===this.producto.codigo_producto;
     },
     buscarProducto(){
+     
       const found = this.productos.find(this.esProducto);
       alert(`
       Codigo producto: ${found.codigo_producto}
@@ -113,6 +125,21 @@ const app  = new Vue ({
       Precio: ${found.precio}
       Cantidad: ${found.cantidad_disponible}
       `)
+      this.producto.codigo_producto=""
+    },
+    agregarProducto(){
+      this.productos.push({ 
+        codigo_producto: this.producto.codigo_producto,
+        nombre_producto: this.producto.nombre_producto,
+        precio:this.producto.precio,
+        cantidad_disponible: this.producto.cantidad_disponible
+      })
+      this.producto.codigo_producto=""
+      this.producto.nombre_producto=""
+      this.producto.precio=""
+      this.producto.cantidad_disponible=""
+    this.guardarBaseDeDatos()
+
     },
     eliminaProducto(index){
       Swal.fire({
@@ -134,12 +161,14 @@ const app  = new Vue ({
         }
     
     })
+    this.guardarBaseDeDatos()
+
     },
     esCompra(comp) {
-      return comp.id_compra ===this.compras.id_compra;
+      return comp.id_compra ===this.compra.id_compra;
     },
     buscarCompra(){
-      const found = this.compras.find(this.esCompra);
+      const found = this.compra.find(this.esCompra);
       alert(`
       Id compra: ${found.id_compra}
       Cedula: ${found.cedula}
@@ -149,6 +178,52 @@ const app  = new Vue ({
       Producto: ${found.producto}
       Precio compra: ${found.precio_compra}
       `)
+  },
+  agregarCompra(){
+    this.compras.push({ 
+      id_compra: this.compra.id_compra,
+      cedula: this.compra.cedula,
+      nombres: this.compra.nombres,
+      apellidos: this.compra.apellidos,
+      codigo_producto: this.compra.codigo_producto,
+      producto:  this.compra.producto,
+      precio_compra: this.compra.precio_compra
+    })
+    this.compra.id_compra =""
+    this.compra.cedula =""
+    this.compra.nombres =""
+    this.compra.apellidos =""
+    this.compra.codigo_producto =""
+    this.compra,producto =""
+    this.compra.precio_compra =""
+    this.guardarBaseDeDatos()
+
+  },  
+  guardarBaseDeDatos(){ //la funcion la guarda en local toca pasarlo a remoto
+    localStorage.setItem('compras-vue',  JSON.stringify(this.compras))
+    localStorage.setItem('productos-vue',  JSON.stringify(this.productos))
+    localStorage.setItem('clientes-vue',  JSON.stringify(this.clientes))
+  },
+},
+created() {
+  let compradb =JSON.parse(localStorage.getItem('compras-vue')) //guardamos  la base de datos en local
+  let productosdb =JSON.parse(localStorage.getItem('productos-vue')) // falta pasarlo a remoto
+  let clientesdb =JSON.parse(localStorage.getItem('clientes-vue'))
+ // si es nula la crea si no la guarda 
+  if (compradb == null){
+    this.compras = [{}]
+  }else{
+    this.compras = compradb
   }
-}
+  if (productosdb == null){
+    this.productos = [{}]
+  }else{
+    this.productos = productosdb
+  }if (clientesdb == null){
+    this.clientes = [{}]
+  }else{
+    this.clientes = clientesdb
+  }
+  
+},
 })

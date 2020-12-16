@@ -19,8 +19,16 @@
      
       <div class="buscador">
         <div class="d-flex align-items-center w-100">
-        <input type="text" class="form-control "  v-model="cliente.cedula" v-on:keyup.enter="buscarCliente">
-        <button class="btn btn-success m-2 ">Buscar</button>
+        <input type="text" class="form-control "  v-model="producto.codigo_producto" v-on:keyup.enter="buscarProducto">
+        <button class="btn btn-success m-2 "@click="buscarProducto">Buscar</button>
+      </div>
+      </div>
+      <div class="agregar">
+        <input type="text" v-model='producto.codigo_producto' placeholder="Codigo del producto">
+        <input type="text" v-model='producto.nombre_producto' placeholder="Nombre del producto">
+        <input type="text" v-model='producto.precio' placeholder="Precio">
+        <input type="text" v-model='producto.cantidad_disponible' placeholder="Cantidad"  v-on:keyup.enter="agregarProducto">
+        <button class="btn btn-success"  @click="agregarProducto">Agregar</button>
       </div>
         <div class="table">
           <table>
