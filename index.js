@@ -106,10 +106,11 @@ const app  = new Vue ({
             'success'
           )
           this.clientes.splice(index,1)
+          this.guardarBaseDeDatos()
         }
     
     })
-    this.guardarBaseDeDatos()
+    
 
     }, 
     esProducto(product) {
@@ -158,10 +159,11 @@ const app  = new Vue ({
             'success'
           )
           this.productos.splice(index,1)
+          this.guardarBaseDeDatos()
+
         }
     
     })
-    this.guardarBaseDeDatos()
 
     },
     esCompra(comp) {
