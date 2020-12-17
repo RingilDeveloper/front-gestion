@@ -114,7 +114,6 @@ const app  = new Vue ({
 
     }, 
     esProducto(product) {
-      console.log(product)
       return product.codigo_producto ===this.producto.codigo_producto;
     },
     buscarProducto(){
@@ -128,12 +127,25 @@ const app  = new Vue ({
       `)
       this.producto.codigo_producto=""
     },
+    actulizarProducto(index){
+     
+      var dato = this.productos[index].codigo_producto
+      if (dato == this.producto.codigo_producto){
+        this.productos.splice(index,1)
+        this.agregarProducto()
+      
+        
+      }
+     
+    },
     agregarProducto(){
+  
       this.productos.push({ 
         codigo_producto: this.producto.codigo_producto,
         nombre_producto: this.producto.nombre_producto,
         precio:this.producto.precio,
         cantidad_disponible: this.producto.cantidad_disponible
+      
       })
       this.producto.codigo_producto=""
       this.producto.nombre_producto=""
