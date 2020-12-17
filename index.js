@@ -73,6 +73,14 @@ const app  = new Vue ({
       Email: ${found.email}
       Telefono: ${found.telefono}`)
     },
+    actulizarCliente(index){
+      console.log('click')
+      var dato = this.clientes[index].cedula
+      if (dato == this.cliente.cedula){
+        this.clientes.splice(index,1)
+        this.agregarCliente()
+      }
+    },
     agregarCliente(){
       this.clientes.push({ 
         cedula: this.cliente.cedula,
@@ -136,7 +144,6 @@ const app  = new Vue ({
       
         
       }
-     
     },
     agregarProducto(){
   
